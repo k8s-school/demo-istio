@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo -e "\e[1;31mQUERYING BOOKINFO\e[0m"
-echo -e "\e[1;31m-----------------\e[0m"
+echo -e "\e[1;32mQUERYING BOOKINFO\e[0m"
+echo -e "\e[1;32m-----------------\e[0m"
 
 # See https://istio.io/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports
 
