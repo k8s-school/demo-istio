@@ -1,0 +1,13 @@
+sudo: required
+language: go
+dist: bionic 
+
+go:
+- 1.13.5
+
+before_script:
+  - git clone --depth 1 -b "v0.7.0-1" --single-branch https://github.com/k8s-school/kind-travis-ci.git
+  - ./kind-travis-ci/kind/k8s-create.sh -c
+
+script:
+  - ./ci.sh
