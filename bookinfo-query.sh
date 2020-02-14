@@ -24,6 +24,7 @@ echo "Sending logs to $LOG_FILE"
 curl -s "${GATEWAY_URL}"
 kubectl get nodes -o wide
 kubectl get svc
+kubectl get pod
 curl -s "${GATEWAY_URL}" | grep -o "<title>.*</title>" >> "$LOG_FILE"
 curl  -sIv "${GATEWAY_URL}" >> "$LOG_FILE"
 
