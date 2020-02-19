@@ -36,14 +36,14 @@ kubectl get virtualservices -o yaml
 # kubectl apply -f "$ISTIO_DIR"/samples/bookinfo/networking/virtual-service-reviews-v3.yaml
 
 set +x
-
+echo -e "\e[1;32mRoute all traffic to v1 services, see kiali\e[0m"
 wait_key
 
 echo "Route 50% traffic to v3 services"
 set -x
 kubectl apply -f "$ISTIO_DIR"/samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
 set +x
-
+echo -e "\e[1;32mRoute 50% traffic to v3 services, see kiali\e[0m"
 wait_key
 
 echo "Clean up"
