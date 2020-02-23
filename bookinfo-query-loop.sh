@@ -3,6 +3,30 @@
 echo -e "\e[1;32mQUERYING BOOKINFO\e[0m"
 echo -e "\e[1;32m-----------------\e[0m"
 
+LOOP_COUNT="10000"
+
+usage() {
+    cat << EOD
+
+Usage: `basename $0` [options] [cmd]
+
+  Available options:
+    -L <loop_count>  Loop number for querying bookinfo application, default to $LOOP_COUNT
+
+EOD
+}
+
+
+# get the options
+while getopts L: c ; do
+    case $c in
+        L) LOOP_COUNT="$OPTARG" ;;
+        \?) usage ; exit 2 ;;
+    esac
+done
+shift $(($OPTIND - 1))
+
+
 # See https://istio.io/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports
 
 set -euxo pipefail

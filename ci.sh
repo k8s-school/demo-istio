@@ -6,6 +6,6 @@ DIR=$(cd "$(dirname "$0")"; pwd -P)
 
 "$DIR"/istio-install.sh
 "$DIR"/bookinfo-install.sh
-timeout 5 "$DIR"/bookinfo-query-loop.sh
+"$DIR"/bookinfo-query-loop.sh -L 10
 "$DIR"/port-forward.sh
 "$DIR"/istio-uninstall.sh
