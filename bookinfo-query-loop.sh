@@ -52,7 +52,7 @@ kubectl get pod
 curl -s "${GATEWAY_URL}" | grep -o "<title>.*</title>" >> "$LOG_FILE"
 curl  -sIv "${GATEWAY_URL}" >> "$LOG_FILE"
 
-while :;
+for i in {1..$LOOP_COUNT}; 
 do echo "====================================" >> "$LOG_FILE"
   sleep 1
   for i in {1..100}; 
