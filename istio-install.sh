@@ -16,8 +16,13 @@ if [ ! -d "$ISTIO_DIR" ]; then
     curl -L https://git.io/getLatestIstio | ISTIO_VERSION="$ISTIO_VERSION" sh -
 fi
 
-export PATH=$PWD/bin:$PATH
 istioctl install --set profile=demo
 
 kubectl get svc -n "$NS"
 
+# Install dashboard (kiali, prometheus, grafana)
+kubectl apply -f "$ISTIO_DIR"/samples/addons
+while ! kubectl wait --for=condition=available --timeout=600s deployment/kiali -n istio-system
+do
+  sleep 1
+done
