@@ -15,8 +15,9 @@ if [ ! -d "$ISTIO_DIR" ]; then
     cd "$ISTIO_PARENT_DIR"
     curl -L https://git.io/getLatestIstio | ISTIO_VERSION="$ISTIO_VERSION" sh -
 fi
-cd "$ISTIO_DIR"
-istioctl manifest apply --set profile=demo
+
+export PATH=$PWD/bin:$PATH
+istioctl install --set profile=demo
 
 kubectl get svc -n "$NS"
 
