@@ -2,19 +2,36 @@
 
 [![Build Status](https://travis-ci.com/k8s-school/istio-example.svg?branch=master)](https://travis-ci.com/k8s-school/istio-example)
 
-# Table of Contents
-- [Install Istio](./istio-install.sh)
-- [Sidecar injection](./sidecar_injection.md)
-    - [Manual](./sidecar_injection.md#manual)
-    - [Automatic](./sidecar_injection.md#automatic)
-- [Observability](./observability.md)
-    - [Kiali](./observability.md#kiali)
-    - [Grafana dashboards](./observability.md#grafana-dashboards)
-    - [Tracing with Jaeger](./observability.md#tracing-with-jaeger)
-    - [Metrics with Prometheus](./observability.md#metrics-with-prometheus)
-- [Traffic management](./traffic_management.md)
-    - [Deploy the bookinfo sample application](./bookinfo-install.sh)
-    - [Routing traffic to one version only](./traffic_management.md#task-2-route-the-traffic-to-one-version-only)
-    - [Traffic Shifting](./traffic_management.md#task-3-traffic-shifting)
-    - [Remove routing rules](./traffic_management.md#task-4-remove-routing-rules-reset)
-- [Uninstall Istio](./istio-uninstall.sh)
+Based on official [Istio Getting Started page](https://istio.io/latest/docs/setup/getting-started/)
+
+# Pre-requisites
+
+An account on an up and running k8s cluster, for example [kind](https://travis-ci.com/k8s-school/kind-travis-ci)
+
+# Install Istio and its Dashboards
+
+```shell
+git clone https://github.com/k8s-school/istio-example
+cd istio-example
+./istio-install.sh
+
+# Access to istio dashboards for prometheus, jaeger, kiali 
+./start-ui.sh
+```
+
+# Install Bookinfo demo application
+ 
+```shell
+./bookinfo-install.sh
+
+# Launch a few queries through ingress gateway
+./bookinfo-query-loop.sh -L 10000
+
+# Display Bookinfo external url
+./bookinfo-url.sh
+
+# Tune Istio L7 load-balancing for Bookinfo application
+./traffic-management.sh
+```
+
+
