@@ -6,7 +6,7 @@ Based on official [Istio Getting Started page](https://istio.io/latest/docs/setu
 
 # Pre-requisites
 
-An account on an up and running k8s cluster, for example [kind](https://github.com/k8s-school/kind-travis-ci)
+An account on an up and running k8s cluster, for example [kind](https://github.com/k8s-school/kind-helper)
 
 # Install Istio and its Dashboards
 
