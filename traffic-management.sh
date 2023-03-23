@@ -46,6 +46,15 @@ set +x
 echo -e "\e[1;32mRoute 50% traffic to v3 services, see kiali\e[0m"
 wait_key
 
+echo "Route based on user identity"
+set -x
+kubectl apply -f "$ISTIO_DIR"/samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
+kubectl get virtualservice reviews -o yaml
+set +x
+echo -e "\e[1;32mRoute traffic using user identity\e[0m"
+echo "On the /productpage of the Bookinfo app, log in as user jason."
+wait_key
+
 echo "Clean up"
 set -x
 kubectl delete -f "$ISTIO_DIR"/samples/bookinfo/networking/virtual-service-all-v1.yaml

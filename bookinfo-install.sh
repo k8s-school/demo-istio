@@ -17,7 +17,6 @@ echo "Create a new namespace called bookinfo and add istio-injection label"
 kubectl create ns "$NS"
 kubectl label ns "$NS" "$NS=true"
 kubectl label namespace "$NS" istio-injection=enabled
-kubectl get ns --show-labels
 kubectl get namespace -L istio-injection
 kubectl config set-context $(kubectl config current-context) --namespace="$NS"
 
@@ -33,5 +32,8 @@ kubectl exec -it $(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metada
   -c ratings -- curl productpage:9080/productpage | grep -o "<title>.*</title>"
 
 # Ingress
+# https://istio.io/latest/docs/setup/getting-started/#ip
 kubectl apply -f "$ISTIO_DIR"/samples/bookinfo/networking/bookinfo-gateway.yaml
+
+istioctl analyze
 
